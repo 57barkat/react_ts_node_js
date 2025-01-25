@@ -8,9 +8,6 @@ const login = async (req, res) => {
         if (!user) {
             return res.status(400).send('Invalid email or password');
         }
-        if (!user.isVerified) {
-            return res.status(400).send('Email not verified');
-        }
         const isMatch = await comparePassword(password, user.password);
         if (!isMatch) {
             return res.status(400).send('Invalid email or password');

@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 // ...existing code...
 
-app.use('/admin', adminRoutes);
+app.use('/api', adminRoutes);
 
 // ...existing code...
 

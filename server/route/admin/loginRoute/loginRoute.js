@@ -8,8 +8,6 @@ const authController = require('../../../controller/auth/auth');
 
 router.post('/login', loginController.login);
 router.post('/signup', signUpController.signUp);
-router.post('/reset-password', authController.resetPassword);
-router.get('/verify-email/:token', authController.verifyEmail);
 
 // ...existing code...
 

@@ -1,40 +1,36 @@
-const crypto = require('crypto');
 const User = require('../../model/loginSchema/loginSchema');
 const { hashPassword } = require('../../utils/loginUtil/loginUtil');
-const nodemailer = require('nodemailer');
 
 const signUp = async (req, res) => {
     const { name, email, password } = req.body;
     try {
+        // Check if all required fields are provided
+        if (!name || !email || !password) {
+            console.error('Missing required fields:', { name, email, password });
+            return res.status(400).send('Name, email, and password are required');
+        }
+
+        // Check if email already exists
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            console.error('Email already registered:', email);
+            return res.status(400).send('Email is already registered');
+        }
+
         const hashedPassword = await hashPassword(password);
-        const verificationToken = crypto.randomBytes(20).toString('hex');
         const newUser = new User({
             name,
             email,
-            password: hashedPassword,
-            verificationToken
+            password: hashedPassword
         });
+
+        // Save the user to the database
         await newUser.save();
 
-        const transporter = nodemailer.createTransport({
-            service: 'Gmail',
-            auth: {
-                user: process.env.EMAIL,
-                pass: process.env.EMAIL_PASSWORD
-            }
-        });
-
-        const mailOptions = {
-            to: newUser.email,
-            from: process.env.EMAIL,
-            subject: 'Email Verification',
-            text: `Please verify your email by clicking the following link: \n\n
-                   http://${req.headers.host}/verify-email/${verificationToken}\n\n`
-        };
-
-        await transporter.sendMail(mailOptions);
-        res.status(201).send('User registered successfully. Please check your email for verification.');
+        // Respond with success
+        res.status(201).send('User registered successfully');
     } catch (error) {
+        console.error('Error registering user:', error);  // Log the error for debugging
         res.status(500).send('Error registering user');
     }
 };
