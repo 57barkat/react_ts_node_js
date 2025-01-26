@@ -12,6 +12,7 @@ import {
   ListItemText,
   ListItemIcon,
   Collapse,
+  Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
@@ -74,7 +75,20 @@ const NavBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            style={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Avatar
+              alt="Store Logo"
+              src="https://lh3.googleusercontent.com/-k3b3AAu3Snw/AAAAAAAAAAI/AAAAAAAAAAA/ALKGfkm0nPJZEChmc5IHmBICmnksiQ3Ufw/photo.jpg?sz=46" // Replace with the actual path to your image
+              style={{ marginRight: 10, width: 30, height: 30 }}
+            />
             Barkat Store
           </Typography>
           {!isMobile && (
@@ -98,13 +112,23 @@ const NavBar = () => {
         PaperProps={{ style: { backgroundColor: "white", color: "black" } }}
       >
         <List>
-          <ListItem button component={Link} to="/" onClick={handleLinkClick}>
+          <ListItem
+            button
+            component={Link}
+            to="/"
+            onClick={handleLinkClick}
+            style={{ borderBottom: "1px solid #ccc" }}
+          >
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button onClick={handleProductsClick}>
+          <ListItem
+            button
+            onClick={handleProductsClick}
+            style={{ borderBottom: "1px solid #ccc" }}
+          >
             <ListItemIcon>
               <ShoppingCartIcon />
             </ListItemIcon>
@@ -118,7 +142,10 @@ const NavBar = () => {
                 component={Link}
                 to="/products/mens"
                 onClick={handleLinkClick}
-                style={{ paddingLeft: theme.spacing(4) }}
+                style={{
+                  paddingLeft: theme.spacing(4),
+                  borderBottom: "1px solid #ccc",
+                }}
               >
                 <ListItemIcon style={{ minWidth: "35px" }}>
                   <ManIcon />
@@ -130,7 +157,10 @@ const NavBar = () => {
                 component={Link}
                 to="/products/women"
                 onClick={handleLinkClick}
-                style={{ paddingLeft: theme.spacing(4) }}
+                style={{
+                  paddingLeft: theme.spacing(4),
+                  borderBottom: "1px solid #ccc",
+                }}
               >
                 <ListItemIcon style={{ minWidth: "35px" }}>
                   <WomanIcon />
@@ -142,7 +172,10 @@ const NavBar = () => {
                 component={Link}
                 to="/products/kids"
                 onClick={handleLinkClick}
-                style={{ paddingLeft: theme.spacing(4) }}
+                style={{
+                  paddingLeft: theme.spacing(4),
+                  borderBottom: "1px solid #ccc",
+                }}
               >
                 <ListItemIcon style={{ minWidth: "35px" }}>
                   <ChildCareIcon />
@@ -156,6 +189,7 @@ const NavBar = () => {
             component={Link}
             to="/payment"
             onClick={handleLinkClick}
+            style={{ borderBottom: "1px solid #ccc" }}
           >
             <ListItemIcon>
               <PaymentIcon />
@@ -167,6 +201,7 @@ const NavBar = () => {
             component={Link}
             to="/about"
             onClick={handleLinkClick}
+            style={{ borderBottom: "1px solid #ccc" }}
           >
             <ListItemIcon>
               <InfoIcon />
@@ -174,6 +209,32 @@ const NavBar = () => {
             <ListItemText primary="About Us" />
           </ListItem>
         </List>
+        {isMobile && (
+          <div style={{ marginTop: "auto", padding: theme.spacing(2) }}>
+            {isAdmin && (
+              <Button
+                color="inherit"
+                component={Link}
+                to="/admin"
+                fullWidth
+                style={{
+                  marginBottom: theme.spacing(1),
+                  border: "1px solid #ccc",
+                }}
+              >
+                Admin
+              </Button>
+            )}
+            <Button
+              color="inherit"
+              onClick={handleLogout}
+              fullWidth
+              style={{ border: "1px solid #ccc" }}
+            >
+              Logout
+            </Button>
+          </div>
+        )}
       </Drawer>
     </>
   );
