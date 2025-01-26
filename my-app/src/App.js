@@ -13,9 +13,13 @@ import './App.css';
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+
+
   const toggleDrawer = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+
 
   return (
     <Router>
@@ -34,6 +38,8 @@ const AppContent = ({ toggleDrawer }) => {
     }
   }, [navigate]);
 
+  const isAdmin = localStorage.getItem("role") === "admin";
+
   return (
     <div className="App">
       <ToastContainer />
@@ -41,7 +47,7 @@ const AppContent = ({ toggleDrawer }) => {
       <Routes>
         <Route path="/login" element={<AuthPage />} />
         <Route path="/signup" element={<AuthPage />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        {isAdmin && <Route path="/admin" element={<AdminDashboard />} />}
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

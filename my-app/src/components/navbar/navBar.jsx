@@ -63,7 +63,7 @@ const NavBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" style={{ flexGrow: 1 }}>
-            eCommerce
+            Barkat Store
           </Typography>
           {!isMobile && (
             <Button color="inherit" onClick={handleLogout}>
