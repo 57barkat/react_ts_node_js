@@ -28,6 +28,7 @@ const NavBar = () => {
   const location = useLocation();
   const hideNavBar =
     location.pathname === "/login" || location.pathname === "/signup";
+  const isAdmin = localStorage.getItem("role") === "admin";
 
   const toggleDrawer = () => {
     setSidebarOpen(!sidebarOpen);
@@ -66,9 +67,16 @@ const NavBar = () => {
             Barkat Store
           </Typography>
           {!isMobile && (
-            <Button color="inherit" onClick={handleLogout}>
-              Logout
-            </Button>
+            <>
+              {isAdmin && (
+                <Button color="inherit" component={Link} to="/admin">
+                  Admin
+                </Button>
+              )}
+              <Button color="inherit" onClick={handleLogout}>
+                Logout
+              </Button>
+            </>
           )}
         </Toolbar>
       </AppBar>
