@@ -88,7 +88,7 @@
 
 ## Frontend Dependencies
 
-- React 
+- React
 - React Router
 - Material-UI
 - Axios
@@ -100,7 +100,7 @@ This is an eCommerce application built with React and Material-UI.
 ## Features
 
 - Home Page
-- Admin Dashboard
+- Admin Dashboard (Protected)
 - Authentication (Login/Signup)
 - Sidebar with navigation links
 - Navbar with logout functionality
@@ -154,7 +154,7 @@ The application is designed to be mobile responsive. The NavBar, SideBar, and Fo
 ### Routes
 
 - `/`: Home Page
-- `/admin`: Admin Dashboard
+- `/admin`: Admin Dashboard (Protected)
 - `/login`: Login Page
 - `/signup`: Signup Page
 
