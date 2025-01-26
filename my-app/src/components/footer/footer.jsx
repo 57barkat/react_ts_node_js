@@ -1,6 +1,8 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 const Footer = () => {
   const location = useLocation();
@@ -13,17 +15,36 @@ const Footer = () => {
       component="footer"
       sx={{
         p: 2,
-        backgroundColor: "primary.main",
-        color: "white",
+        backgroundColor: "white",
+        color: "black",
         textAlign: "center",
         position: "fixed",
         bottom: 0,
         width: "100%",
+        borderTop: "1px solid black",
       }}
     >
       <Typography variant="body1">
-        © 2023 eCommerce. All rights reserved.
+        © 2025 eCommerce. All rights reserved.
       </Typography>
+      <Box
+        sx={{
+          mt: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="body2" sx={{ mr: 1 }}>
+          Contact Us:
+        </Typography>
+        <IconButton color="inherit" href="barkatullahkhan120136@gmail.com">
+          <EmailIcon />
+        </IconButton>
+        <IconButton color="inherit" href="tel:+923406087431">
+          <PhoneIcon />
+        </IconButton>
+      </Box>
     </Box>
   );
 };

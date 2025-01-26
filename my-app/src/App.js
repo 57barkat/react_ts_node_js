@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import HomePage from './components/HomePage/homePage';
+import HomePage from './pages/homePage/homePage';
 import AuthPage from './pages/auth/auth';
 import AdminDashboard from './components/adminDashboard/adminDashboard';
 import NavBar from './components/navbar/navBar';

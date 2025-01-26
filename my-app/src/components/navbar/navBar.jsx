@@ -49,7 +49,10 @@ const NavBar = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        style={{ backgroundColor: "white", color: "black" }}
+      >
         <Toolbar>
           <IconButton
             edge="start"
@@ -69,7 +72,12 @@ const NavBar = () => {
           )}
         </Toolbar>
       </AppBar>
-      <Drawer anchor="left" open={sidebarOpen} onClose={toggleDrawer}>
+      <Drawer
+        anchor="left"
+        open={sidebarOpen}
+        onClose={toggleDrawer}
+        PaperProps={{ style: { backgroundColor: "white", color: "black" } }}
+      >
         <List>
           <ListItem button component={Link} to="/" onClick={handleLinkClick}>
             <ListItemIcon>

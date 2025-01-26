@@ -1,12 +1,14 @@
 import React from "react";
-// Remove unused imports and variables
+import { Box } from "@mui/material";
+import HeroSection from "../../components/HeroSection/heroSection";
+
 const HomePage = () => {
-  // ...existing code...
   return (
-    <div>
-      <h1>Home Page</h1>
-      {/* Home page content */}
-    </div>
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <HeroSection />
+      </Box>
+    </Box>
   );
 };
 
