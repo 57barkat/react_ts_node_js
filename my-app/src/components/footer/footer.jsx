@@ -38,7 +38,10 @@ const Footer = () => {
         <Typography variant="body2" sx={{ mr: 1 }}>
           Contact Us:
         </Typography>
-        <IconButton color="inherit" href="barkatullahkhan120136@gmail.com">
+        <IconButton
+          color="inherit"
+          href="mailto:barkatullahkhan120136@gmail.com"
+        >
           <EmailIcon />
         </IconButton>
         <IconButton color="inherit" href="tel:+923406087431">
