@@ -60,10 +60,12 @@ const AuthPage = () => {
         const response = await login(formData);
         localStorage.setItem("token", response.token); // Store token in localStorage
         localStorage.setItem("role", response.role); // Store role in localStorage
+        toast.success("Login successful!"); // Show success toast on login
         navigate("/"); // Redirect to HomePage on successful login
       } else {
         await signup(formData);
         toast.success("User registered successfully!"); // Show success toast on signup
+        setIsLogin(true); // Switch to login after successful signup
       }
     } catch (error) {
       console.error("Authentication error:", error);

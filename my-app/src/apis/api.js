@@ -20,3 +20,5 @@ export const login = async (userData) => {
         throw error.response ? error.response.data : new Error("Network error");
     }
 };
+
+// Removed verifyToken function
