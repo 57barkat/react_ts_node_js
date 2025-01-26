@@ -47,6 +47,7 @@
 
 - **Success:** `200 OK`
   - **Body:** `Login successful`
+  - **Body:** `{ "token": "your_jwt_token", "role": "user_role" }`
 - **Error:** `400 Bad Request`
   - **Body:** `Invalid email or password`
 - **Error:** `500 Internal Server Error`
@@ -56,6 +57,7 @@
 
 - `MONGODB_URI`: MongoDB connection string.
 - `PORT`: Port number for the server (default: 5000).
+- `JWT_SECRET`: Secret key for JWT.
 
 ## Setup
 
@@ -71,3 +73,22 @@
 - Bcrypt
 - Body-parser
 - Dotenv
+- Jsonwebtoken
+
+## Frontend Setup
+
+1. Navigate to the `my-app` directory.
+2. Install dependencies: `npm install`
+3. Create a `.env` file with the required environment variables.
+4. Start the frontend server: `npm start`
+
+## Frontend Environment Variables
+
+- `REACT_APP_API_URL`: The base URL for the API.
+
+## Frontend Dependencies
+
+- React
+- React Router
+- Material-UI
+- Axios
