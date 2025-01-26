@@ -4,13 +4,19 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './pages/homePage/homePage';
 import AuthPage from './pages/auth/auth';
-import AdminDashboard from './components/adminDashboard/adminDashboard';
 import NavBar from './components/navbar/navBar';
 import Footer from './components/footer/footer';
+import AdminDashBoard from './pages/adminDashboard/adminDashboard';
 import NotFoundPage from './components/notFoundPage/notFoundPage';
 import Mens from "./pages/Products/Mens";
 import Women from "./pages/Products/Women";
 import Kids from "./pages/Products/Kids";
+import UserManagement from './pages/adminDashboard/UserManagement/UserManagement';
+import ProductManagement from './pages/adminDashboard/ProductManagement/ProductManagement';
+import PaymentTransactions from './pages/adminDashboard/PaymentTransactions/PaymentTransactions';
+import OrderManagement from './pages/adminDashboard/OrderManagement/OrderManagement';
+import ReportingAnalytics from './pages/adminDashboard/ReportingAnalytics/ReportingAnalytics';
+import MarketingPromotions from './pages/adminDashboard/MarketingPromotions/MarketingPromotions';
 import './App.css';
 
 function App() {
@@ -46,7 +52,17 @@ const AppContent = ({ toggleDrawer }) => {
       <Routes>
         <Route path="/login" element={<AuthPage />} />
         <Route path="/signup" element={<AuthPage />} />
-        {isAdmin && <Route path="/admin" element={<AdminDashboard />} />}
+        {isAdmin && (
+          <>
+            <Route path="/admin" element={<AdminDashBoard />} />
+            <Route path="/admin/user-management" element={<UserManagement />} />
+            <Route path="/admin/product-management" element={<ProductManagement />} />
+            <Route path="/admin/payment-transactions" element={<PaymentTransactions />} />
+            <Route path="/admin/order-management" element={<OrderManagement />} />
+            <Route path="/admin/reporting-analytics" element={<ReportingAnalytics />} />
+            <Route path="/admin/marketing-promotions" element={<MarketingPromotions />} />
+          </>
+        )}
         <Route path="/" element={<HomePage />} />
         <Route path="/products/mens" element={<Mens />} />
         <Route path="/products/women" element={<Women />} />
