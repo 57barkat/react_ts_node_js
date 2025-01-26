@@ -8,18 +8,17 @@ import AdminDashboard from './components/adminDashboard/adminDashboard';
 import NavBar from './components/navbar/navBar';
 import Footer from './components/footer/footer';
 import NotFoundPage from './components/notFoundPage/notFoundPage';
+import Mens from "./pages/Products/Mens";
+import Women from "./pages/Products/Women";
+import Kids from "./pages/Products/Kids";
 import './App.css';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-
-
   const toggleDrawer = () => {
     setSidebarOpen(!sidebarOpen);
   };
-
-
 
   return (
     <Router>
@@ -49,6 +48,9 @@ const AppContent = ({ toggleDrawer }) => {
         <Route path="/signup" element={<AuthPage />} />
         {isAdmin && <Route path="/admin" element={<AdminDashboard />} />}
         <Route path="/" element={<HomePage />} />
+        <Route path="/products/mens" element={<Mens />} />
+        <Route path="/products/women" element={<Women />} />
+        <Route path="/products/kids" element={<Kids />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

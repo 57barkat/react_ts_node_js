@@ -11,12 +11,18 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Collapse,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import PaymentIcon from "@mui/icons-material/Payment";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import ManIcon from "@mui/icons-material/Man";
+import WomanIcon from "@mui/icons-material/Woman";
+import ChildCareIcon from "@mui/icons-material/ChildCare";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 
@@ -29,6 +35,7 @@ const NavBar = () => {
   const hideNavBar =
     location.pathname === "/login" || location.pathname === "/signup";
   const isAdmin = localStorage.getItem("role") === "admin";
+  const [productsOpen, setProductsOpen] = useState(false);
 
   const toggleDrawer = () => {
     setSidebarOpen(!sidebarOpen);
@@ -44,6 +51,10 @@ const NavBar = () => {
     if (window.innerWidth <= 600) {
       toggleDrawer();
     }
+  };
+
+  const handleProductsClick = () => {
+    setProductsOpen(!productsOpen);
   };
 
   if (hideNavBar) return null;
@@ -93,17 +104,53 @@ const NavBar = () => {
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem
-            button
-            component={Link}
-            to="/products"
-            onClick={handleLinkClick}
-          >
+          <ListItem button onClick={handleProductsClick}>
             <ListItemIcon>
               <ShoppingCartIcon />
             </ListItemIcon>
             <ListItemText primary="Products" />
+            {productsOpen ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
+          <Collapse in={productsOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem
+                button
+                component={Link}
+                to="/products/mens"
+                onClick={handleLinkClick}
+                style={{ paddingLeft: theme.spacing(4) }}
+              >
+                <ListItemIcon style={{ minWidth: "35px" }}>
+                  <ManIcon />
+                </ListItemIcon>
+                <ListItemText primary="Men" />
+              </ListItem>
+              <ListItem
+                button
+                component={Link}
+                to="/products/women"
+                onClick={handleLinkClick}
+                style={{ paddingLeft: theme.spacing(4) }}
+              >
+                <ListItemIcon style={{ minWidth: "35px" }}>
+                  <WomanIcon />
+                </ListItemIcon>
+                <ListItemText primary="Women" />
+              </ListItem>
+              <ListItem
+                button
+                component={Link}
+                to="/products/kids"
+                onClick={handleLinkClick}
+                style={{ paddingLeft: theme.spacing(4) }}
+              >
+                <ListItemIcon style={{ minWidth: "35px" }}>
+                  <ChildCareIcon />
+                </ListItemIcon>
+                <ListItemText primary="Kids" />
+              </ListItem>
+            </List>
+          </Collapse>
           <ListItem
             button
             component={Link}
