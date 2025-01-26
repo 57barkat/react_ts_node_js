@@ -7,6 +7,7 @@ import AuthPage from './pages/auth/auth';
 import AdminDashboard from './components/adminDashboard/adminDashboard';
 import NavBar from './components/navbar/navBar';
 import Footer from './components/footer/footer';
+import NotFoundPage from './components/notFoundPage/notFoundPage';
 import './App.css';
 
 function App() {
@@ -42,6 +43,7 @@ const AppContent = ({ toggleDrawer }) => {
         <Route path="/signup" element={<AuthPage />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </div>
