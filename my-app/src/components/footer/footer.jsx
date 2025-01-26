@@ -21,7 +21,7 @@ const Footer = () => {
         position: "fixed",
         bottom: 0,
         width: "100%",
-        borderTop: "1px solid black",
+        boxShadow: "0px -4px 2px -2px gray", // Adjusted boxShadow to be on top
       }}
     >
       <Typography variant="body1">
