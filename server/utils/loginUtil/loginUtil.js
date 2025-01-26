@@ -14,6 +14,7 @@ const comparePassword = async (password, hashedPassword) => {
     if (!password || !hashedPassword) {
         throw new Error('Both password and hashedPassword are required');
     }
+    console.log('Comparing passwords:', password, hashedPassword); // Log the passwords being compared
     return await bcrypt.compare(password, hashedPassword);
 };
 
