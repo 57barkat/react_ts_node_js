@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Add this line
+const cors = require('cors');
 const adminRoutes = require('./route/admin');
 require('dotenv').config();
 
@@ -9,11 +9,11 @@ require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors()); // Add this line
+app.use(cors());
 
 // ...existing code...
 
-app.use('/api/admin', adminRoutes); // Ensure this line is correct
+app.use('/api/admin', adminRoutes);
 
 // ...existing code...
 

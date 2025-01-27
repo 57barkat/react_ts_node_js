@@ -53,6 +53,99 @@
 - **Error:** `500 Internal Server Error`
   - **Body:** `Error logging in`
 
+### Product Management
+
+- **Endpoint:** `/api/admin/products/create`
+- **Method:** `POST`
+- **Description:** Create a new product.
+
+#### Request Body
+
+```json
+{
+  "productName": "Sample Product",
+  "category": "Men",
+  "price": 100,
+  "size": ["Medium"],
+  "color": "Red",
+  "frontImageUrl": "http://example.com/front.jpg",
+  "backImageUrl": "http://example.com/back.jpg"
+}
+```
+
+#### Response
+
+- **Success:** `201 Created`
+  - **Body:** `Product created successfully`
+- **Error:** `400 Bad Request`
+  - **Body:** `Invalid product data`
+- **Error:** `500 Internal Server Error`
+
+  - **Body:** `Error creating product`
+
+- **Endpoint:** `/api/admin/products/all`
+- **Method:** `GET`
+- **Description:** Get all products.
+
+#### Response
+
+- **Success:** `200 OK`
+  - **Body:** `Array of products`
+- **Error:** `500 Internal Server Error`
+
+  - **Body:** `Error fetching products`
+
+- **Endpoint:** `/api/admin/products/category/:category`
+- **Method:** `GET`
+- **Description:** Get products by category.
+
+#### Response
+
+- **Success:** `200 OK`
+  - **Body:** `Array of products`
+- **Error:** `500 Internal Server Error`
+
+  - **Body:** `Error fetching products by category`
+
+- **Endpoint:** `/api/admin/products/update/:id`
+- **Method:** `PUT`
+- **Description:** Update a product.
+
+#### Request Body
+
+```json
+{
+  "productName": "Updated Product",
+  "frontImageUrl": "http://example.com/new_front.jpg",
+  "backImageUrl": "http://example.com/new_back.jpg"
+}
+```
+
+#### Response
+
+- **Success:** `200 OK`
+  - **Body:** `Product updated successfully`
+- **Error:** `400 Bad Request`
+  - **Body:** `Invalid product data`
+- **Error:** `404 Not Found`
+  - **Body:** `Product not found`
+- **Error:** `500 Internal Server Error`
+
+  - **Body:** `Error updating product`
+
+- **Endpoint:** `/api/admin/products/delete/:id`
+- **Method:** `DELETE`
+- **Description:** Delete a product.
+
+#### Response
+
+- **Success:** `200 OK`
+  - **Body:** `Product deleted successfully`
+- **Error:** `404 Not Found`
+  - **Body:** `Product not found`
+- **Error:** `500 Internal Server Error`
+  - **Body:** `Error deleting product`
+
 ## Environment Variables
 
 - `MONGODB_URI`: MongoDB connection string.
