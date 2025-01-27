@@ -1,11 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const loginRoute = require('./loginRoute/loginRoute');
+const manageUsersRoute = require('./manageUsers');
 
-// ...existing code...
+const router = express.Router();
 
-router.use('/auth', loginRoute);
-
-// ...existing code...
+router.use('/login', loginRoute);
+router.use('/manageUsers', manageUsersRoute);
 
 module.exports = router;

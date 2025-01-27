@@ -13,7 +13,7 @@ app.use(cors()); // Add this line
 
 // ...existing code...
 
-app.use('/api', adminRoutes);
+app.use('/api/admin', adminRoutes); // Ensure this line is correct
 
 // ...existing code...
 
