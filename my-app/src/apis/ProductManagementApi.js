@@ -65,3 +65,54 @@ export const deleteProduct = async (productId) => {
         throw error;
     }
 };
+
+export const postComment = async (productId, commentData) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/comment/${productId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(commentData)
+        });
+        if (!response.ok) {
+            throw new Error('Failed to post comment');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error posting comment:', error);
+        throw error;
+    }
+};
+
+export const postRating = async (productId, ratingData) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/rating/${productId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(ratingData)
+        });
+        if (!response.ok) {
+            throw new Error('Failed to post rating');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error posting rating:', error);
+        throw error;
+    }
+};
+
+export const fetchProductsByCategory = async (category) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/category/${category}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch products by category');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching products by category:', error);
+        throw error;
+    }
+};

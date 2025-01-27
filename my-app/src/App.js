@@ -8,7 +8,6 @@ import NavBar from './components/navbar/navBar';
 import Footer from './components/footer/footer';
 import AdminDashBoard from './pages/adminDashboard/adminDashboard';
 import NotFoundPage from './components/notFoundPage/notFoundPage';
-import Mens from "./pages/Products/Mens";
 import Women from "./pages/Products/Women";
 import Kids from "./pages/Products/Kids";
 import UserManagement from './pages/adminDashboard/UserManagement/UserManagement';
@@ -18,6 +17,7 @@ import OrderManagement from './pages/adminDashboard/OrderManagement/OrderManagem
 import ReportingAnalytics from './pages/adminDashboard/ReportingAnalytics/ReportingAnalytics';
 import MarketingPromotions from './pages/adminDashboard/MarketingPromotions/MarketingPromotions';
 import './App.css';
+import MenProducts from './pages/adminDashboard/ProductManagement/men/menProducts';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -64,7 +64,7 @@ const AppContent = ({ toggleDrawer }) => {
           </>
         )}
         <Route path="/" element={<HomePage />} />
-        <Route path="/products/mens" element={<Mens />} />
+        <Route path="/products/mens" element={<MenProducts />} />
         <Route path="/products/women" element={<Women />} />
         <Route path="/products/kids" element={<Kids />} />
         <Route path="*" element={<NotFoundPage />} />
